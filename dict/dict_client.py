@@ -79,7 +79,10 @@ def do_register():
         if data == 'OK':
             print("注册成功")
             login(name)
+        elif data == 'CF_FAIL':
+            print("账号已经被注册")
         else:
+            print(data)
             print("注册失败")
         return
 

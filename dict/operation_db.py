@@ -11,7 +11,7 @@ class Database:
     def __init__(self, host='localhost',
                  port=3306,
                  user='root',
-                 passwd='123456',
+                 passwd='xzl1122',
                  database='dict',
                  charset='utf8'):
         self.host = host
@@ -45,20 +45,22 @@ class Database:
         self.cur.execute(sql)
         r = self.cur.fetchone()  # 如果查询到结果
         if r:
-            return False
+            return -1
 
         # 加密处理
         hash = hashlib.md5((name + "the-salt").encode())
+
         hash.update(passwd.encode())
         sql = "insert into user (name,passwd) values (%s,%s)"
 
         try:
             self.cur.execute(sql, [name, hash.hexdigest()])
+
             self.db.commit()
             return True
-        except Exception:
+        except Exception as e:
             self.db.rollback()
-            return False
+            return e
 
     # 处理登录
     def login(self, name, passwd):
@@ -87,7 +89,7 @@ class Database:
 
     # 单词查询
     def query(self, word):
-        sql = "select mean from words \
+        sql = "select interpret from words \
                 where word = '%s'" % word
         self.cur.execute(sql)
         r = self.cur.fetchone()

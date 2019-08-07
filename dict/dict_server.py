@@ -20,11 +20,13 @@ def do_register(c,db,data):
     tmp = data.split(' ')
     name = tmp[1]
     passwd = tmp[2]
-
-    if db.register(name,passwd):
+    kk = db.register(name,passwd)
+    if kk:
         c.send(b'OK')
+    elif kk == -1:
+        c.send(b"CF_FAIL")
     else:
-        c.send(b"FAIL")
+        c.send(kk.encode())
 
 #　处理登录L name passwd
 def do_login(c,db,data):
