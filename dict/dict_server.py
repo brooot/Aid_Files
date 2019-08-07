@@ -65,11 +65,11 @@ def do_hist(c,db,data):
     c.send(b'OK')
     for i in r:
         # i ==> (name,word,time)
-        msg = "%s     %s     %s"%i
-        sleep(0.1)  #　防止沾包
+        msg = "%s\t%s\t%s"%i
+        sleep(0.001)  #　防止沾包
         c.send(msg.encode())
 
-    sleep(0.1)
+    sleep(0.001)
     c.send(b'##')
 
 #　处理客户端请求

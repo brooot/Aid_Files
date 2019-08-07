@@ -38,23 +38,7 @@ def do_hist(name):
         print("还没有历史记录")
 
 
-# 二级界面
-def login(name):
-    while True:
-        print("""
-        ================Query=================
-         1. 查单词    2. 历史记录　　　3. 注销
-        ======================================
-        """)
-        cmd = input("输入选项:")
-        if cmd == '1':
-            do_query(name)
-        elif cmd == '2':
-            do_hist(name)
-        elif cmd == '3':
-            return
-        else:
-            print("请输入正确命令!")
+
 
 
 # 注册
@@ -100,6 +84,25 @@ def do_login():
         login(name)
     else:
         print("登录失败")
+
+
+# 二级界面
+def login(name):
+    while True:
+        print("""
+        ================Query=================
+         1. 查单词    2. 历史记录　　　3. 注销
+        ======================================
+        """)
+        cmd = input("输入选项:")
+        if cmd == '1':
+            do_query(name)
+        elif cmd == '2':
+            do_hist(name)
+        elif cmd == '3':
+            return
+        else:
+            print("请输入正确命令!")
 
 
 # 创建网络链接
