@@ -1,11 +1,13 @@
-#　web frame 配置文件
+"""
+web frame 的配置文件
+"""
 
-# [frame ip]
-frame_ip = '127.0.0.1'
+#【frame ip】
+frame_ip = '0.0.0.0'
 frame_port = 8080
 
-#　[debug]
+# debug
 DEBUG = True
 
-#　[save html pages]
-STATIC_DIR = "./static"
+# 网页存放位置
+STATIC_DIR = './static'
